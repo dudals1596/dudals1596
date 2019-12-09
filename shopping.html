@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style media="screen">
+    form select option{
+      width: 300px;
+      height: 350px;
+    }
+    a{
+      font-size: 20px;
+    }
+    body{
+      background-color: #F5ECCE;
+    }
+    h1{
+      font-size: 40px;
+    }
+  </style>
+<script>
+//이미지 출력
+function list() {
+var sel = document.getElementById("book");
+var img = document.getElementById("bookimage");
+img.src = sel.options[sel.selectedIndex].value;
+}
+//계산
+var sum=0;
+function calc(cBox) {
+	if(cBox.checked)
+		sum += parseInt(cBox.value);
+	else
+		sum -= parseInt(cBox.value);
+	document.getElementById("result").value = sum;
+}
+//클릭
+function c() {
+	alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요."); 
+}
+
+</script>
+</head>
+<body onload="bookimage()">
+  <h1>쇼핑</h1>
+  <h4>상품을 정하고 체크박스에 체크하시면 자동으로 지불 금액이 계산됩니다.</h4>
+<form>
+  <select id="book" onchange="list()">
+	   <option value="p1.jpg">빙과
+	   <option value="p2.jpg">대런 섄
+	   <option value="p3.jpg">마녀의 집
+     <option value="p4.jpg">해리포터와 불의 잔
+  </select>
+<img id="bookimage" src="p1.jpg" alt="">
+<br>
+<a href="list.html">책 정보 자세히 보러 가기</a>
+</form>
+<br>
+<form>
+<input type="checkbox" name="book1" value="10800" onclick="calc(this)"> 빙과 10800원
+<input type="checkbox" name="book2" value="6300" onclick="calc(this)"> 대런 섄 6300원
+<input type="checkbox" name="book3" value="7200" onclick="calc(this)"> 마녀의 집 7200원
+<input type="checkbox" name="book4" value="31500" onclick="calc(this)"> 헤리포터와 불의 잔 31500원<br>
+지불 금액 <input type="text" id="result" value="0" >
+<button type="button" onclick = "c(event)">구매</button>
+</form>
+</body>
+</html>
